@@ -1,0 +1,131 @@
+@media only screen and (max-width : 767px) {
+    .navbar-nav > li > a{
+        padding-top: 0px !important;
+    }
+
+    .carousel-control img{
+        height: 32px;
+    }
+
+    .s-size-12 {
+        font-size: 12px;
+    }
+
+    .count{
+        width: 23px;
+        height: 23px;
+        font-size: 15px;
+    }
+
+    h2{
+        font-size: 18px !important;
+    }
+
+    .about-content {
+        font-size: 14px;
+    }
+    .how-work {
+      padding: 15px;
+    }
+    .heading {
+  font-size: 16px !important;
+}
+   .btn-lg{
+        font-size: 12px !important;
+    }
+
+    .slider-caption p {
+        font-size: 14px;
+    }
+    .section-gap {
+  padding: 30px 0;
+}
+
+    .roadmap-left {
+        width: 5%;
+         float: none;
+    }
+
+    .doctor-box h5 {
+        font-size: 16px;
+        color: #092f57;
+    }
+
+    .doctor-box p{
+        font-size: 12px;
+    }
+
+    .font1 {
+        font-size: 41px;
+        padding: 0;
+        text-shadow: 0 1px 3px #8b8b8b;
+        font-weight: normal;
+        color: #0f3675;
+    }
+
+    .conti-blog a{
+        font-size: 14px;
+    }
+
+    .conti-blog p{
+        font-size: 14px;
+    }
+
+    h1{
+        font-size: 20px !important;
+    }
+
+    .text-content p{
+        font-size: 12px;
+    }
+
+    .list-element1 ul li{
+        font-size: 12px;
+    }
+
+    h4{
+        font-size: 14px !important;
+    }
+
+    .count2-detail ul li{
+        font-size: 12px;
+    }
+
+    .count2 {
+        padding-top: 0%;
+    }
+
+    .counter2{
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+    }
+
+    .text-content ul li{
+        font-size: 14px  ;
+    }
+    .text-content{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+@media only screen and (max-width : 1023px) {
+    .navbar-toggle {
+        display: inline!important; ;
+    }
+    .navbar-header {
+        width: 100%;
+        display: block;
+    }
+    #navbar {
+        float: left !important;
+        width: 100%;
+    }
+    .navbar-nav > li {
+        display: block;
+        width: 100%;
+    }
+    .nav.navbar-nav {
+        width: 100%;
+    }
+}
