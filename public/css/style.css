@@ -1024,3 +1024,19 @@ footer {
 {
     display: none;
 }
+
+.in-width {
+    width: 100% !important;
+
+}
+.text-area {
+    height: 100px !important;
+}
+.submit-from {
+    padding: 10px 50px !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.btn-read-more:hover {
+    background-color: #002766 !important;
+}

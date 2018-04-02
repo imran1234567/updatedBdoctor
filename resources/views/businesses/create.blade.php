@@ -34,105 +34,159 @@
             </div>
 
             {{--form start--}}
-            <div class="form-portion ">
+            <div class="form-portion  ">
             <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-            {!! Form::open(array('route'=>'businesses.store', 'data-parsley-validate' =>'', 'class' => 'form-horizontal' )) !!}
-            <div class="col-md-6 pad-top-5">
-            {{ Form::label('c_name', 'Business Name') }} <span style="color: red">*</span>
-            {{ Form::text('c_name', null, array('class'=>'form-control', 'required'=>'','data-parsely-required-message' => 'Please Enter Your Business Name')) }}
+            <div class="col-md-10 col-md-offset-1">
+            {!! Form::open(array('route'=>'businesses.store', 'data-parsley-validate' =>'', 'class' => 'form-inline' )) !!}
+            <div class="col-md-12 pad-top-5">
+                <div class="col-md-3 col-xs-12">
+            {{ Form::label('c_name', 'Business Name :') }}
+                </div>
+                <div class="col-md-9 col-xs-12">
+            {{ Form::text('c_name', null, array('class'=>'form-control in-width', 'required'=>'','data-parsely-required-message' => 'Please Enter Your Business Name')) }}
+                </div>
+                </div>
+            <div class="col-md-12 pad-top-5">
+                <div class="col-md-3 col-xs-12">
+            {{ Form::label('b_of_company', 'Nature Of Businesses :') }}
+                </div>
+                <div class="col-md-9 col-xs-12">
+            {{ Form::text('b_of_company', null, array('class'=>'form-control in-width', 'required'=>'','maxlength' => '255','data-parsley-required-message'=> "Please Enter Your Business")) }}
+
+                </div>
             </div>
-            <div class="col-md-6 pad-top-5">
-            {{ Form::label('b_of_company', 'Nature Of Businesses') }} <span style="color: red">*</span>
-            {{ Form::text('b_of_company', null, array('class'=>'form-control', 'required'=>'','maxlength' => '255','data-parsley-required-message'=> "Please Enter Your Business")) }}
-            </div>
-                <div class="col-md-12">
-                    <br>
-                    {{ Form::label('name_entrepreneur', 'Name of the Promoter/ Entrepreneurs') }} <span style="color: red">*</span>
-                    {{ Form::text('name_entrepreneur', null, array('class'=>'form-control','required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Entrepreneour or Promoter Name")) }}
+                <div class="col-md-12 pad-top-5">
+                    <div class="col-md-3 col-xs-12">
+                        {{ Form::label('name_entrepreneur', 'Name of the Promoter/ Entrepreneurs :') }}
+                    </div>
+                    <div class="addMore">
+                    <div class="col-md-9 col-xs-12">
+                        <div class="promoter-group">
+                            {{ Form::text('name_entrepreneur', null, array('class'=>'form-control in-width','placeholder'=>'Name','required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Entrepreneour or Promoter Name")) }}
+                            <div class="row pad-top-5">
+                                <div class="col-md-4 col-xs-12">
+                                    {{--{{ Form::label('pemail', 'Email-Id :') }}--}}
+                                    {{ Form::email('pemail', null, ['class'=>'form-control in-width','placeholder'=>'Email']) }}
+                                </div>
+
+                                <div class="col-md-4 col-xs-12">
+                                    {{--{{ Form::label('pphone', 'Phone No :') }}--}}
+                                    {{ Form::text('pphone', null, array('class'=>'form-control in-width','placeholder'=>'Phone No.', 'required'=>'','maxlength' => '10','data-parsley-type' => "number")) }}
+                                </div>
+
+                                <div class="col-md-4 col-xs-12">
+                                    {{--{{ Form::label('pdesignation', 'Designation :') }}--}}
+                                    {{ Form::text('pdesignation', null, array('class'=>'form-control in-width','placeholder'=>'Designation','required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Name of The Directors")) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <br>
-                    {{ Form::label('pemail', 'Email-Id:') }}<span style="color: red">*</span>
-                    {{ Form::email('pemail', null, ['class'=>'form-control']) }}
+
+
+
+                <div class="col-md-12 pad-top-5">
+                    <div class="col-md-3 col-xs-12">
+                    {{ Form::label('name_director', 'Other Key Members :') }}
+                    </div>
+
+                    <div class="col-md-9 col-xs-12">
+                        <div class="addMore" id="addmorefield">
+                    {{ Form::text('name_director', null, array('class'=>'form-control in-width','required'=>'','placeholder'=>'Name','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Name of The Directors")) }}
+                    <div class="row pad-top-5">
+                        <div class="col-md-4 col-xs-12">
+                            {{--{{ Form::label('kemail', ' :') }}--}}
+                            {{ Form::email('kemail', null, ['class'=>'form-control in-width','placeholder'=>'Email-Id']) }}
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            {{--{{ Form::label('kphone', 'Member  Phone No :') }}--}}
+                            {{ Form::text('kphone', null, array('class'=>'form-control in-width','placeholder'=>'Phone No', 'required'=>'','maxlength' => '10','data-parsley-type' => "number")) }}
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            {{--{{ Form::label('kdesignation', 'Member Designation :') }}--}}
+                            {{ Form::text('kdesignation', null, array('class'=>'form-control in-width','placeholder'=>'Designation','required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Name of The Directors")) }}
+                        </div>
+                    </div>
+                        <div class="col-md-12 col-xs-12 pad-top-5">
+                            <a href="" class="btn btn-primary btn-read-more addMoreBttn" >Add More</a>
+                        </div>
+
+                    </div>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <br>
-                    {{ Form::label('pphone', 'Phone No:') }}<span style="color: red">*</span>
-                    {{ Form::text('pphone', null, array('class'=>'form-control', 'required'=>'','maxlength' => '10','data-parsley-type' => "number")) }}
-                </div>
-                <div class="col-md-4">
-                    <br>
-                    {{ Form::label('pdesignation', 'Designation:') }}<span style="color: red">*</span>
-                    {{ Form::text('pdesignation', null, array('class'=>'form-control','required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Name of The Directors")) }}
-                </div>
-                <div class="col-md-12">
-                    <br>
-                    {{ Form::label('name_director', 'Other Key Members') }}<span style="color: red">*</span>
-                    {{ Form::text('name_director', null, array('class'=>'form-control','required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Name of The Directors")) }}
-                </div>
-                <div class="col-md-4">
-                    <br>
-                    {{ Form::label('kemail', 'Member Email-Id:') }}<span style="color: red">*</span>
-                    {{ Form::email('kemail', null, ['class'=>'form-control']) }}
-                </div>
-                <div class="col-md-4">
-                    <br>
-                    {{ Form::label('kphone', 'Member  Phone No:') }}<span style="color: red">*</span>
-                    {{ Form::text('kphone', null, array('class'=>'form-control', 'required'=>'','maxlength' => '10','data-parsley-type' => "number")) }}
-                </div>
-                <div class="col-md-4">
-                    <br>
-                    {{ Form::label('kdesignation', 'Member Designation:') }}<span style="color: red">*</span>
-                    {{ Form::text('kdesignation', null, array('class'=>'form-control','required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Name of The Directors")) }}
-                </div>
+
 
 
             <div class="col-md-12 pad-top-5">
-            {{ Form::label('r_o_address', 'Company Address:') }}<span style="color: red">*</span>
-            </div>
-
-                <div class="col-md-4">
-                    {{ Form::text('line1', null, array('class'=>'form-control', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter State", 'placeholder'=>'Line1')) }}
+                <div class="col-md-3 col-xs-12">
+            {{ Form::label('r_o_address', 'Company Address :') }}
                 </div>
-                <div class="col-md-4">
-                    {{ Form::text('line2', null, array('class'=>'form-control', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter City", 'placeholder' => 'Line2')) }}
+                <div class="col-md-9 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            {{ Form::textarea('line1', null, array('class'=>'form-control in-width text-area', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter State", 'placeholder'=>'Company Address')) }}
+                        </div>
+                        <div class="col-md-4 col-xs-12 pad-top-5">
+                            {{ Form::text('c_state', null, array('class'=>'form-control in-width', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter State", 'placeholder'=>'State')) }}
+                        </div>
+                        <div class="col-md-4 col-xs-12 pad-top-5">
+                            {{ Form::text('c_city', null, array('class'=>'form-control in-width', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter City", 'placeholder' => 'City')) }}
+                        </div>
+                        <div class="col-md-4 col-xs-12 pad-top-5">
+                            {{ Form::text('c_locality', null, array('class'=>'form-control in-width', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Office Locality", 'placeholder' => 'Pin')) }}
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    {{ Form::text('line3', null, array('class'=>'form-control', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Office Locality", 'placeholder' => 'Line3')) }}
+            </div>
+
+
+                {{--<div class="col-md-4">--}}
+                    {{--{{ Form::text('line2', null, array('class'=>'form-control', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter City", 'placeholder' => 'Line2')) }}--}}
+                {{--</div>--}}
+                {{--<div class="col-md-4">--}}
+                    {{--{{ Form::text('line3', null, array('class'=>'form-control', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Office Locality", 'placeholder' => 'Line3')) }}--}}
+                {{--</div>--}}
+
+
+            <div class="col-md-12 pad-top-5">
+                <div class="col-md-3 col-xs-12">
+                     {{ Form::label('key_issue', 'Key issues faced (Not more than 100 words) :') }}
                 </div>
-            <div class="col-md-4 pad-top-5">
-            {{ Form::text('c_state', null, array('class'=>'form-control', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter State", 'placeholder'=>'State')) }}
-            </div>
-            <div class="col-md-4 pad-top-5">
-            {{ Form::text('c_city', null, array('class'=>'form-control', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter City", 'placeholder' => 'City')) }}
-            </div>
-            <div class="col-md-4 pad-top-5">
-            {{ Form::text('c_locality', null, array('class'=>'form-control', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Office Locality", 'placeholder' => 'Locality')) }}
+                <div class="col-md-9 col-xs-12">
+                    {{ Form::textarea('key_issue', null, array('class'=>'form-control in-width text-area', 'placeholder'=>'Key issues faced (Not more then 100 words)','required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Can i Know What Issues You Faced ?")) }}
+                </div>
+
             </div>
 
-            <div class="col-md-12">
-            <br>
-            {{ Form::label('key_issue', 'Key issues faced (Not more than 100 words):') }}<span style="color: red">*</span>
-            {{ Form::textarea('key_issue', null, array('class'=>'form-control', 'placeholder'=>'','required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Can i Know What Issues You Faced ?")) }}
+            <div class="col-md-12 pad-top-5">
+                <div class="col-md-3 col-xs-12">
+                    {{ Form::label('turnover', 'Turnover (Last Fiscal) :') }}
+                </div>
+
+                <div class="col-md-9 col-xs-12">
+                    {{ Form::text('turnover', null, array('class'=>'form-control in-width','placeholder'=>'', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Turnover Details")) }}
+                </div>
             </div>
 
-            <div class="col-md-6">
-            <br>
-            {{ Form::label('turnover', 'Turnover (Last Fiscal):') }}<span style="color: red">*</span>
-            {{ Form::text('turnover', null, array('class'=>'form-control','placeholder'=>'', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Turnover Details")) }}
-            </div>
-
-            <div class="col-md-6">
-            <br>
-            {{ Form::label('meeting', 'Preferred time for meeting Business Doctors:') }}<span style="color: red">*</span>
-            {{ Form::text('meeting', null, array('class'=>'form-control', 'placeholder'=>'','required'=>'','maxlength' => '255',  'data-parsley-required-message'=> "Arranged a Meeting Shedule With Us")) }}
+            <div class="col-md-12 pad-top-5">
+                <div class="col-md-3 col-xs-12">
+            {{ Form::label('meeting', 'Preferred time for meeting Business Doctors :') }}
+                </div>
+                <div class="col-md-9 col-xs-12">
+            {{ Form::text('meeting', null, array('class'=>'form-control in-width', 'placeholder'=>'','required'=>'','maxlength' => '255',  'data-parsley-required-message'=> "Arranged a Meeting Shedule With Us")) }}
+                </div>
             </div>
 
 
-            <div class="col-md-12 text-center">
-            <br>
-            {{ Form::submit('Submit', array('class'=>'btn btn-primary btn-read-more', 'style'=>'margin-top:15px; margin-bottom:15px;')) }}
+            <div class="col-md-12  pad-top-5">
+                <div class="col-md-6 col-xs-12 text-left">
+                <div class="g-recaptcha" data-sitekey="6LcePAATAAAAAGPRWgx90814DTjgt5sXnNbV5WaW"></div>
+                </div>
+                <div class="col-md-6 col-xs-12 text-right">
+            {{ Form::submit('Submit', array('class'=>'btn btn-primary btn-read-more submit-from', 'style'=>'')) }}
+
+                </div>
             </div>
 
 
@@ -148,5 +202,37 @@
 
 @section('scripts')
     {!! Html::script('js/parsley.min.js') !!}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <script>
+        $(document).ready(function(){
+            var next = 1;
+            $(".addMoreBttn").click(function(e){
+                e.preventDefault();
+                var addto = "#addmorefield" + next;
+                var addRemove = "#addmorefield" + (next);
+                next = next + 1;
+                var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '" type="text">';
+                var newInput = $(newIn);
+                var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
+                var removeButton = $(removeBtn);
+                $(addto).after(newInput);
+                $(addRemove).after(removeButton);
+                $("#addmorefield" + next).attr('data-source',$(addto).attr('data-source'));
+                $("#count").val(next);
+
+                $('.remove-me').click(function(e){
+                    e.preventDefault();
+                    var fieldNum = this.id.charAt(this.id.length-1);
+                    var fieldID = "#addmorefield" + fieldNum;
+                    $(this).remove();
+                    $(fieldID).remove();
+                });
+            });
+
+
+
+        });
+    </script>
 @endsection
 
