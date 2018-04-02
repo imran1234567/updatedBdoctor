@@ -59,7 +59,6 @@
                     <div class="col-md-3 col-xs-12">
                         {{ Form::label('name_entrepreneur', 'Name of the Promoter/ Entrepreneurs :') }}
                     </div>
-                    <div class="addMore">
                     <div class="col-md-9 col-xs-12">
                         <div class="promoter-group">
                             {{ Form::text('name_entrepreneur', null, array('class'=>'form-control in-width','placeholder'=>'Name','required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Entrepreneour or Promoter Name")) }}
@@ -80,7 +79,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+
                     </div>
                 </div>
 
@@ -90,9 +89,7 @@
                     <div class="col-md-3 col-xs-12">
                     {{ Form::label('name_director', 'Other Key Members :') }}
                     </div>
-
                     <div class="col-md-9 col-xs-12">
-                        <div class="addMore" id="addmorefield">
                     {{ Form::text('name_director', null, array('class'=>'form-control in-width','required'=>'','placeholder'=>'Name','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Name of The Directors")) }}
                     <div class="row pad-top-5">
                         <div class="col-md-4 col-xs-12">
@@ -107,11 +104,6 @@
                             {{--{{ Form::label('kdesignation', 'Member Designation :') }}--}}
                             {{ Form::text('kdesignation', null, array('class'=>'form-control in-width','placeholder'=>'Designation','required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Name of The Directors")) }}
                         </div>
-                    </div>
-                        <div class="col-md-12 col-xs-12 pad-top-5">
-                            <a href="" class="btn btn-primary btn-read-more addMoreBttn" >Add More</a>
-                        </div>
-
                     </div>
                     </div>
                 </div>
@@ -134,7 +126,7 @@
                             {{ Form::text('c_city', null, array('class'=>'form-control in-width', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter City", 'placeholder' => 'City')) }}
                         </div>
                         <div class="col-md-4 col-xs-12 pad-top-5">
-                            {{ Form::text('c_locality', null, array('class'=>'form-control in-width', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Office Locality", 'placeholder' => 'Pin')) }}
+                            {{ Form::text('c_locality', null, array('class'=>'form-control in-width', 'required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Office Locality", 'placeholder' => 'Locality')) }}
                         </div>
                     </div>
                 </div>
@@ -203,36 +195,5 @@
 @section('scripts')
     {!! Html::script('js/parsley.min.js') !!}
     <script src='https://www.google.com/recaptcha/api.js'></script>
-
-    <script>
-        $(document).ready(function(){
-            var next = 1;
-            $(".addMoreBttn").click(function(e){
-                e.preventDefault();
-                var addto = "#addmorefield" + next;
-                var addRemove = "#addmorefield" + (next);
-                next = next + 1;
-                var newIn = '<input autocomplete="off" class="input form-control" id="field' + next + '" name="field' + next + '" type="text">';
-                var newInput = $(newIn);
-                var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >-</button></div><div id="field">';
-                var removeButton = $(removeBtn);
-                $(addto).after(newInput);
-                $(addRemove).after(removeButton);
-                $("#addmorefield" + next).attr('data-source',$(addto).attr('data-source'));
-                $("#count").val(next);
-
-                $('.remove-me').click(function(e){
-                    e.preventDefault();
-                    var fieldNum = this.id.charAt(this.id.length-1);
-                    var fieldID = "#addmorefield" + fieldNum;
-                    $(this).remove();
-                    $(fieldID).remove();
-                });
-            });
-
-
-
-        });
-    </script>
 @endsection
 
