@@ -61,7 +61,13 @@
                     </div>
                     <div class="col-md-9 col-xs-12">
                         <div class="promoter-group">
-                            {{ Form::text('name_entrepreneur', null, array('class'=>'form-control in-width','placeholder'=>'Name','required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Entrepreneour or Promoter Name")) }}
+                            <table class="table table-bordered" id="dynamic_field">  
+                                <tr>  
+                                    <td>{{ Form::text('name_entrepreneur[]', null, array('class'=>'form-control in-width','placeholder'=>'Name','required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Entrepreneour or Promoter Name")) }}</td>  
+                                    <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>  
+                                </tr>  
+                            </table>  
+                            
                             <div class="row pad-top-5">
                                 <div class="col-md-4 col-xs-12">
                                     {{--{{ Form::label('pemail', 'Email-Id :') }}--}}
@@ -90,7 +96,13 @@
                     {{ Form::label('name_director', 'Other Key Members :') }}
                     </div>
                     <div class="col-md-9 col-xs-12">
-                    {{ Form::text('name_director', null, array('class'=>'form-control in-width','required'=>'','placeholder'=>'Name','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Name of The Directors")) }}
+                    <table class="table table-bordered" id="dynamic_field2">  
+                        <tr>  
+                            <td>{{ Form::text('name_director', null, array('class'=>'form-control in-width','required'=>'','placeholder'=>'Name','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Name of The Directors")) }}</td>  
+                            <td><button type="button" name="add2" id="add2" class="btn btn-success">Add More</button></td>  
+                        </tr>  
+                    </table>  
+                    
                     <div class="row pad-top-5">
                         <div class="col-md-4 col-xs-12">
                             {{--{{ Form::label('kemail', ' :') }}--}}
@@ -195,5 +207,126 @@
 @section('scripts')
     {!! Html::script('js/parsley.min.js') !!}
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script type="text/javascript">
+    $(document).ready(function(){      
+      var postURL = "<?php echo url('businesses.store'); ?>";
+      var i=1;  
+
+
+      $('#add').click(function(){  
+           i++;  
+           $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td>{{ Form::text('name_entrepreneur[]', null, array('class'=>'form-control in-width','placeholder'=>'Name','required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Entrepreneour or Promoter Name")) }}</td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+      });  
+
+
+      $(document).on('click', '.btn_remove', function(){  
+           var button_id = $(this).attr("id");   
+           $('#row'+button_id+'').remove();  
+      });  
+
+
+      $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+
+
+      $('#submit').click(function(){            
+           $.ajax({  
+                url:postURL,  
+                method:"POST",  
+                data:$('#add_name').serialize(),
+                type:'json',
+                success:function(data)  
+                {
+                    if(data.error){
+                        printErrorMsg(data.error);
+                    }else{
+                        i=1;
+                        $('.dynamic-added').remove();
+                        $('#add_name')[0].reset();
+                        $(".print-success-msg").find("ul").html('');
+                        $(".print-success-msg").css('display','block');
+                        $(".print-error-msg").css('display','none');
+                        $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
+                    }
+                }  
+           });  
+      });  
+
+
+      function printErrorMsg (msg) {
+         $(".print-error-msg").find("ul").html('');
+         $(".print-error-msg").css('display','block');
+         $(".print-success-msg").css('display','none');
+         $.each( msg, function( key, value ) {
+            $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+         });
+      }
+    });  
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function(){      
+      var postURL = "<?php echo url('businesses.store'); ?>";
+      var i=1;  
+
+
+      $('#add2').click(function(){  
+           i++;  
+           $('#dynamic_field2').append('<tr id="row'+i+'" class="dynamic-added2"><td>{{ Form::text('name_entrepreneur[]', null, array('class'=>'form-control in-width','placeholder'=>'Name','required'=>'','maxlength' => '255', 'data-parsley-required-message'=> "Please Enter Entrepreneour or Promoter Name")) }}</td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove1">X</button></td></tr>');  
+      });  
+
+
+      $(document).on('click', '.btn_remove1', function(){  
+           var button_id = $(this).attr("id");   
+           $('#row'+button_id+'').remove();  
+      });  
+
+
+      $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          }
+      });
+
+
+      $('#submit').click(function(){            
+           $.ajax({  
+                url:postURL,  
+                method:"POST",  
+                data:$('#add_name').serialize(),
+                type:'json',
+                success:function(data)  
+                {
+                    if(data.error){
+                        printErrorMsg(data.error);
+                    }else{
+                        i=1;
+                        $('.dynamic-added').remove();
+                        $('#add_name')[0].reset();
+                        $(".print-success-msg").find("ul").html('');
+                        $(".print-success-msg").css('display','block');
+                        $(".print-error-msg").css('display','none');
+                        $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
+                    }
+                }  
+           });  
+      });  
+
+
+      function printErrorMsg (msg) {
+         $(".print-error-msg").find("ul").html('');
+         $(".print-error-msg").css('display','block');
+         $(".print-success-msg").css('display','none');
+         $.each( msg, function( key, value ) {
+            $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+         });
+      }
+    });  
+</script>
+</body>
+</html>
 @endsection
 

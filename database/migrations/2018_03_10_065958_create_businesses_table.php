@@ -21,7 +21,7 @@ class CreateBusinessesTable extends Migration
             $table->text('line3');
             $table->text('c_state');
             $table->text('c_city');
-            $table->text('c_locality');
+            $table->text('c_locality'); 
             $table->text('pemail');
             $table->text('pphone');
             $table->text('pdesignation');
@@ -30,8 +30,8 @@ class CreateBusinessesTable extends Migration
             $table->text('kdesignation');
             $table->text('email');
             $table->text('phone');
-            $table->text('name_entrepreneur');
-            $table->text('name_director');
+            $table->string('name_entrepreneur');
+            $table->string('name_director');
             $table->text('turnover');
             $table->text('key_issue');
             $table->text('meeting');

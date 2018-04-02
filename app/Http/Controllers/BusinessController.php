@@ -63,12 +63,33 @@ class BusinessController extends Controller
             'kemail' => ' email | max:255  ',
             'kdesignation' => ' max:255  ',
             'kphone' => ' numeric | digits:10',
-            'name_entrepreneur'=>'required | max:255',
-            'name_director' => 'required | max:255',
+            'name_entrepreneur[]'=>'required | max:255',
+            'name_director[]' => 'required | max:255',
             'turnover' => 'required | max:50',
             'key_issue' => 'required | max:255',
             'meeting' => 'required | max:255'
         ));
+        
+        $rules = [];
+        
+        foreach($request->input('name_entrepreneur', 'name_director') as $key=>$value){
+            $rules["name_entrepreneur.{key}"] = 'required';
+            $rules["name_director.{key}"] = 'required';
+        }
+        
+        $validator = Validator::make($request->all(), $rules);
+        
+         if ($validator->passes()) {
+
+
+            foreach($request->input('name_entrepreneur', 'name_director') as $key => $value) {
+                Business::create(['name_entrepreneur'=>$value]);
+                Business::create(['name_director'=>$value]);
+            }
+
+
+            return response()->json(['success'=>'done']);
+        }
 
         /*Store Data in Data Base*/
         $business = new Business;
@@ -87,8 +108,8 @@ class BusinessController extends Controller
         $business->kemail = $request->kemail;
         $business->kphone = $request->kphone;
         $business->kdesignation = $request->kdesignation;
-        $business->name_entrepreneur = $request->name_entrepreneur;
-        $business->name_director = $request->name_director;
+//        $business->name_entrepreneur = $request->name_entrepreneur;
+//        $business->name_director = $request->name_director;
         $business->turnover = $request->turnover;
         $business->key_issue = $request->key_issue;
         $business->meeting = $request->meeting;
