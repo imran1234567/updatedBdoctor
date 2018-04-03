@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Session;
 use App\Business;
+use DB;
 
 class BusinessController extends Controller
 {
@@ -35,9 +36,25 @@ class BusinessController extends Controller
      */
     public function create()
     {
+        $countries = DB::table("countries")->lists("name","id");
         $business = Business::all();
-        return  view('businesses.create');
+        return  view('businesses.create',compact('countries'));
     }
+    
+//     public function getStateList(Request $request)
+//    {
+//        $states = DB::table("states")
+//                    ->where("country_id",$request->country_id)
+//                    ->lists("name","id");
+//        return response()->json($states);
+//    }
+//    public function getCityList(Request $request)
+//    {
+//        $cities = DB::table("cities")
+//                    ->where("state_id",$request->state_id)
+//                    ->lists("name","id");
+//        return response()->json($cities);
+//    }
 
     /**
      * Store a newly created resource in storage.
@@ -70,26 +87,7 @@ class BusinessController extends Controller
             'meeting' => 'required | max:255'
         ));
         
-        $rules = [];
         
-        foreach($request->input('name_entrepreneur', 'name_director') as $key=>$value){
-            $rules["name_entrepreneur.{key}"] = 'required';
-            $rules["name_director.{key}"] = 'required';
-        }
-        
-        $validator = Validator::make($request->all(), $rules);
-        
-         if ($validator->passes()) {
-
-
-            foreach($request->input('name_entrepreneur', 'name_director') as $key => $value) {
-                Business::create(['name_entrepreneur'=>$value]);
-                Business::create(['name_director'=>$value]);
-            }
-
-
-            return response()->json(['success'=>'done']);
-        }
 
         /*Store Data in Data Base*/
         $business = new Business;

@@ -98,4 +98,8 @@ Route::get('comments/{id}/delete', ['uses' => 'CommentsController@delete', 'as' 
 Route::resource('businesses', 'BusinessController');
 /*Business health Chaeck*/
 
+//Route::get('api/dependent-dropdown','APIController@index');
+Route::get('api/get-state-list','APIController@getStateList');
+Route::get('api/get-city-list','APIController@getCityList');
+
 //end
